@@ -1,0 +1,4 @@
+swig -c++ -python genShadow.i 
+g++ -c -fPIC genShadow_wrap.cxx -I /home/sysadm/local/Python-2.7.10/include/python2.7/  -I ~/local/cfitsio/include/ -L ~/local/cfitsio/lib/ -lcfitsio
+g++ -fPIC -c genShadow.cpp -I ~/local/cfitsio/include/ -L ~/local/cfitsio/lib/ -lcfitsio
+g++ -shared -Wl,-soname,_genShadow.so -o _genShadow.so genShadow.o genShadow_wrap.o  -I ~/local/cfitsio/include/ -L ~/local/cfitsio/lib/ -lcfitsio
